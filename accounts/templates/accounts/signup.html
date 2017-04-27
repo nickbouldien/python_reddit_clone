@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign up!</h1>
+
+    {% if error %}
+    {{ error }}
+    {% endif %}
+    
+    <form action="{% url 'signup' %}" method="POST">
+      {% csrf_token %}
+      Username:
+      <input type="text" name="username" value="" placeholder="user name">
+      Password:
+      <input type="password" name="password1" value="">
+      Confirm password:
+      <input type="password" name="password2" value="">
+      <input type="submit" value="singup">
+    </form>
+  </body>
+</html>
