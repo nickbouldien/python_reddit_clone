@@ -5,20 +5,25 @@
     <title></title>
   </head>
   <body>
-    <h1>Sign up!</h1>
+    <h1>Login!</h1>
 
     {% if error %}
     {{ error }}
     {% endif %}
 
-    <form action="{% url 'accounts:signup' %}" method="POST">
+    <form action="{% url 'accounts:login' %}" method="POST">
       {% csrf_token %}
+
+      {% if request.GET.next %}
+        <input type='hidden' name='next' value= {{ request.GET.next }} />
+      {% endif %}
+      
       Username:
+      <br>
       <input type="text" name="username" value="" placeholder="user name">
+      <br>
       Password:
-      <input type="password" name="password1" value="">
-      Confirm password:
-      <input type="password" name="password2" value="">
+      <input type="password" name="password" value="">
       <input type="submit" value="singup">
     </form>
   </body>
